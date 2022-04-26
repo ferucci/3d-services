@@ -46,9 +46,10 @@ const modal = () => {
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       if (document.documentElement.clientWidth < 768) {
-        console.log('Нет анимации, экран меньше 768xpx')
+        modal.style.display = 'block';
       } else {
         requestId = requestAnimationFrame(challenge);
+
       }
 
     });

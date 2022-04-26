@@ -26,7 +26,7 @@ const timer = (deadline) => {
   // Создаю ф-цию, которая будет обновлять таймер и переношу сюда значения
   const updateClock = () => {
 
-    let getTime = getTimeRemaining('01 may 2022');
+    let getTime = getTimeRemaining();
 
     timerDays.textContent = ('0' + getTime.days).slice(-2);
     timerHours.textContent = ('0' + getTime.hours).slice(-2);
@@ -34,7 +34,6 @@ const timer = (deadline) => {
     timerSeconds.textContent = ('0' + getTime.seconds).slice(-2);
 
     if (getTime.timeRemaning > 0) {
-      clearInterval(idInterval);
       idInterval = setInterval(updateClock, 1000, '01 may 2022');
     } else if (getTime.timeRemaning <= 0) {
       clearInterval(idInterval);
@@ -43,10 +42,9 @@ const timer = (deadline) => {
       timerMinutes.textContent = ('0' + '0');
       timerSeconds.textContent = ('0' + '0');
     }
-
   }
-  updateClock();
 
+  idInterval = setInterval(updateClock, 1000, '01 may 2022');
 };
 
 export default timer;
