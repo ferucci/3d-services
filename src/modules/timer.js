@@ -27,14 +27,15 @@ const timer = (deadline) => {
   const updateClock = () => {
 
     let getTime = getTimeRemaining();
-
+    console.log('1 sek')
     timerDays.textContent = ('0' + getTime.days).slice(-2);
     timerHours.textContent = ('0' + getTime.hours).slice(-2);
     timerMinutes.textContent = ('0' + getTime.minutes).slice(-2);
     timerSeconds.textContent = ('0' + getTime.seconds).slice(-2);
 
     if (getTime.timeRemaning > 0) {
-      idInterval = setInterval(updateClock, 1000, '01 may 2022');
+      clearInterval(idInterval);
+      idInterval = setInterval(updateClock, 1000);
     } else if (getTime.timeRemaning <= 0) {
       clearInterval(idInterval);
       timerDays.textContent = ('0' + '0');
@@ -44,7 +45,7 @@ const timer = (deadline) => {
     }
   }
 
-  idInterval = setInterval(updateClock, 1000, '01 may 2022');
+  idInterval = setInterval(updateClock, 1000, deadline);
 };
 
 export default timer;
