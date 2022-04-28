@@ -2,18 +2,22 @@
 const menu = () => {
   const btnMenu = document.querySelector('.menu');
   const menu = document.querySelector('menu');
-  const menuClose = menu.querySelector('.close-btn');
-  const menuItems = menu.querySelectorAll('ul>li>a');
+  const menuAllLinks = menu.querySelectorAll('a');
 
-  const handleMenu = (e) => {
-    e.preventDefault();
+  const handleMenu = () => {
     menu.classList.toggle('active-menu');
   }
 
-  btnMenu.addEventListener('click', handleMenu);
-  menuClose.addEventListener('click', handleMenu);
+  menuAllLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (e.target === e.target.closest('a')) {
+        e.preventDefault();
+        handleMenu();
+      }
+    });
+  });
 
-  menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
+  btnMenu.addEventListener('click', handleMenu);
 };
 
 
