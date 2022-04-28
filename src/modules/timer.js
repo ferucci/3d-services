@@ -34,8 +34,7 @@ const timer = (deadline) => {
     timerSeconds.textContent = ('0' + getTime.seconds).slice(-2);
 
     if (getTime.timeRemaning > 0) {
-      clearInterval(idInterval);
-      idInterval = setInterval(updateClock, 1000);
+
     } else if (getTime.timeRemaning <= 0) {
       clearInterval(idInterval);
       timerDays.textContent = ('0' + '0');
