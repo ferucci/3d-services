@@ -25,23 +25,6 @@ const menu = () => {
     }
   });
 
-
-
-
-
-
-
-  // menuAllLinks.forEach(link => {
-  //   link.addEventListener('click', (e) => {
-  //     if (e.target === e.target.closest('a')) {
-  //       e.preventDefault();
-  //       console.log(e.target)
-  //       handleMenu();
-  //     }
-  //   });
-  // });
-
-  // btnMenu.addEventListener('click', handleMenu);
 };
 
 
