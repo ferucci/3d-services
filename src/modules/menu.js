@@ -16,6 +16,7 @@ const menu = () => {
     } else if (e.target.matches('menu>ul>li>a') || e.target.matches('menu>a')) {
       menuAllLinks.forEach(link => {
         if (e.target === link) {
+          e.preventDefault();
           handleMenu();
           return;
         }
