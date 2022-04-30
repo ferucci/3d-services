@@ -13,14 +13,14 @@ const timer = (deadline) => {
     let dateStop = new Date(deadline).getTime();
     let dateNow = new Date().getTime();
     // Высчитываю разность между датами:
-    let timeRemaning = (dateStop - dateNow) / 1000; // получаю секунды
+    let timeRemaining = (dateStop - dateNow) / 1000; // получаю секунды
 
-    let days = Math.floor(timeRemaning / 60 / 60 / 24);
-    let hours = Math.floor((timeRemaning / 60 / 60) % 24); // остаток от деления на 24
-    let minutes = Math.floor((timeRemaning / 60) % 60); // вычитываются минуты, а ниже секунды
-    let seconds = Math.floor(timeRemaning % 60); // остаток от деления на 60
+    let days = Math.floor(timeRemaining / 60 / 60 / 24);
+    let hours = Math.floor((timeRemaining / 60 / 60) % 24); // остаток от деления на 24
+    let minutes = Math.floor((timeRemaining / 60) % 60); // вычитываются минуты, а ниже секунды
+    let seconds = Math.floor(timeRemaining % 60); // остаток от деления на 60
 
-    return { timeRemaning, days, hours, minutes, seconds };
+    return { timeRemaining, days, hours, minutes, seconds };
   }
 
   // Создаю ф-цию, которая будет обновлять таймер и переношу сюда значения
@@ -33,9 +33,9 @@ const timer = (deadline) => {
     timerMinutes.textContent = ('0' + getTime.minutes).slice(-2);
     timerSeconds.textContent = ('0' + getTime.seconds).slice(-2);
 
-    if (getTime.timeRemaning > 0) {
+    if (getTime.timeRemaining > 0) {
 
-    } else if (getTime.timeRemaning <= 0) {
+    } else if (getTime.timeRemaining <= 0) {
       clearInterval(idInterval);
       timerDays.textContent = ('0' + '0');
       timerHours.textContent = ('0' + '0');
