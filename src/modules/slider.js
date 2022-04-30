@@ -49,9 +49,6 @@ const slider = () => {
 
   const autoSlide = () => {
     prevSlide(slides, currentSlide, 'portfolio-item-active');
-
-
-
     prevSlide(dots, currentSlide, 'dot-active');
 
     // Увеличиваю счётчик на 1

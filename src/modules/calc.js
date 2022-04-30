@@ -1,5 +1,7 @@
 "use strict";
 
+import { animate } from './helpers';
+
 const calc = (price = 100) => {
   const calcBlock = document.querySelector('.calc-block');
   const calcType = document.querySelector('.calc-type');
@@ -8,11 +10,6 @@ const calc = (price = 100) => {
   const calcDay = document.querySelector('.calc-day');
 
   let total = document.getElementById('total');
-
-  const time = 1000;
-  const step = 10;
-  let idInterval;
-  let numRemaining;
 
   // Ф-ция расчёта суммы и записи в total
   const countCalc = () => {
@@ -44,40 +41,30 @@ const calc = (price = 100) => {
 
     total.textContent = Math.round(totalValue);
 
-  }
+    animate({
+      duration: 333,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        total = document.getElementById('total');
+        let start = 1;
 
-  const animateCalc = (num, el) => {
-    total = document.getElementById('total');
-    let totalV = countCalc();
-    let n = 0;
-
-    numRemaining = Math.round(time / (num / step));
-    idInterval = setInterval(() => {
-
-      n = n + step;
-
-      if (n >= num) {
-        clearInterval(idInterval);
+        total.textContent = Math.round(totalValue / (start / progress));
       }
-      el.textContent = n - step;
-    }, numRemaining);
+    });
 
-    console.log(idInterval);
   }
 
   calcBlock.addEventListener('input', (e) => {
 
-    if (e.target === calcSquare ||
+    if (e.target === calcType || e.target === calcSquare ||
       e.target === calcCount || e.target === calcDay) {
-      countCalc()
-      while (e.target === '' || e.target === 0) {
-        clearInterval(idInterval);
-      }
-      animateCalc(total.textContent, total)
-
+      countCalc();
     }
 
   });
+
 }
 
 export default calc;
