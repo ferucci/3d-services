@@ -33,13 +33,13 @@ const validForms = () => {
 
         if (input === input.closest('.mess')) {
           input.addEventListener('blur', (e) => {
-            e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]/g, '').replace(/\s+/g, ' ');
+            e.target.value = e.target.value.replace(/[^а-яА-Я\.\,\!\?\$\:\-\d\s]/g, '').replace(/\s+/g, ' ');
           });
         }
 
         if (input === input.closest('.form-phone')) {
           input.addEventListener('blur', (e) => {
-            e.target.value = e.target.value.replace(/[^\d\s\-\(\)]+/g, '').replace(/\s+/g, ' ');;
+            e.target.value = e.target.value.replace(/[^\d\s\-\(\)\+]+/g, '').replace(/\s+/g, ' ');;
           });
         }
 
