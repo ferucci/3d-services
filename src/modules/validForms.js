@@ -39,7 +39,7 @@ const validForms = () => {
 
         if (input === input.closest('.form-phone')) {
           input.addEventListener('blur', (e) => {
-            e.target.value = e.target.value.replace(/[^\d\s\-\(\)\+]+/g, '').replace(/\s+/g, ' ');;
+            e.target.value = e.target.value.replace(/[^\d\s\-\(\)\+]+/g, '').replace(/\s+/g, ' ');
           });
         }
 
