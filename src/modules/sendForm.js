@@ -2,13 +2,15 @@
 
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId)
-  let formElements = form.querySelectorAll('input')
-
   const statusBlock = document.createElement('div')
   const loadText = 'Загрузка...'
   const errorText = 'Данные заполнены не правильно!'
   const successText = 'Спасибо! Наш менеджер свяжиться с вами в ближайшее время'
+
+  let formElements = form.querySelectorAll('input')
+
   statusBlock.style.color = 'white'
+
 
   const validate = (list) => {
     let success = true
@@ -137,8 +139,9 @@ const sendForm = ({ formId, someElem = [] }) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      console.log('submit')
       submitForm()
+
+      setTimeout(() => statusBlock.remove(), 5000);
     })
   } catch (error) {
     console.log(error.message);

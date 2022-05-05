@@ -9,7 +9,7 @@ import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
 
-timer('06 may 2022');
+timer('13 may 2022');
 menu();
 modal();
 smoothScrolling();
