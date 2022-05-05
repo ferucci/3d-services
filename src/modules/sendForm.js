@@ -13,44 +13,45 @@ const sendForm = ({ formId, someElem = [] }) => {
   const validate = (list) => {
     let success = true
 
+    const addClass = (input) => {
+      input.classList.remove('false')
+      input.classList.add('success')
+    }
+    const removeClass = (input) => {
+      input.classList.add('false')
+      input.classList.remove('success')
+    }
+
     list.forEach(input => {
       if (input === input.closest('[name="user_name"]')) {
         if (/[а-яА-Я]/g.test(input.value)) {
-          input.classList.remove('false')
-          input.classList.add('success')
+          addClass(input)
         } else {
-          input.classList.add('false')
-          input.classList.remove('success')
+          removeClass(input)
         }
       }
 
       if (input === input.closest('[name="user_email"]')) {
-        if (/[\w\-\.]+@([\w]+\.)+[\w]+/gi.test(input.value)) {
-          input.classList.remove('false')
-          input.classList.add('success')
+        if (/[\w\-\.]+@([\w]+\.)+[\w]+/gi.test(input.value) || input.value == '') {
+          addClass(input)
         } else {
-          input.classList.add('false')
-          input.classList.remove('success')
+          removeClass(input)
         }
       }
 
       if (input === input.closest('[name="user_phone"]')) {
         if (/[\d\-\+\(\)]+/g.test(input.value)) {
-          input.classList.remove('false')
-          input.classList.add('success')
+          addClass(input)
         } else {
-          input.classList.add('false')
-          input.classList.remove('success')
+          removeClass(input)
         }
       }
 
       if (input === input.closest('[name="user_message"]')) {
         if (/[а-яА-Я\.\,\!\?\$\:\-\d\s]/g.test(input.value)) {
-          input.classList.remove('false')
-          input.classList.add('success')
+          addClass(input)
         } else {
-          input.classList.add('false')
-          input.classList.remove('success')
+          removeClass(input)
         }
       }
     })
