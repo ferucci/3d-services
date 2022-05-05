@@ -10,55 +10,50 @@ const sendForm = ({ formId, someElem = [] }) => {
   const successText = 'Спасибо! Наш менеджер свяжиться с вами в ближайшее время'
   statusBlock.style.color = 'white'
 
-  const validVal = (e) => {
-    if (e.target === e.target.closest('[name="user_name"]')) {
-      if (/[а-яА-Я]/g.test(e.target.value)) {
-        e.target.classList.remove('false')
-        e.target.classList.add('success')
-      } else {
-        e.target.classList.add('false')
-        e.target.classList.remove('success')
-      }
-    }
-
-    if (e.target === e.target.closest('[name="user_email"]')) {
-      if (/[\w\-\.]+@([\w]+\.)+[\w]+/gi.test(e.target.value)) {
-        e.target.classList.remove('false')
-        e.target.classList.add('success')
-      } else {
-        e.target.classList.add('false')
-        e.target.classList.remove('success')
-      }
-    }
-
-    if (e.target === e.target.closest('[name="user_phone"]')) {
-      if (/[\d\-\+\(\)]+/g.test(e.target.value)) {
-        e.target.classList.remove('false')
-        e.target.classList.add('success')
-      } else {
-        e.target.classList.add('false')
-        e.target.classList.remove('success')
-      }
-    }
-
-    if (e.target === e.target.closest('[name="user_message"]')) {
-      if (/[а-яА-Я\.\,\!\?\$\:\-\d\s]/g.test(e.target.value)) {
-        e.target.classList.remove('false')
-        e.target.classList.add('success')
-      } else {
-        e.target.classList.add('false')
-        e.target.classList.remove('success')
-      }
-    }
-
-  }
-
-  formElements.forEach(input => {
-    input.addEventListener('blur', validVal)
-  })
-
   const validate = (list) => {
     let success = true
+
+    list.forEach(input => {
+      if (input === input.closest('[name="user_name"]')) {
+        if (/[а-яА-Я]/g.test(input.value)) {
+          input.classList.remove('false')
+          input.classList.add('success')
+        } else {
+          input.classList.add('false')
+          input.classList.remove('success')
+        }
+      }
+
+      if (input === input.closest('[name="user_email"]')) {
+        if (/[\w\-\.]+@([\w]+\.)+[\w]+/gi.test(input.value)) {
+          input.classList.remove('false')
+          input.classList.add('success')
+        } else {
+          input.classList.add('false')
+          input.classList.remove('success')
+        }
+      }
+
+      if (input === input.closest('[name="user_phone"]')) {
+        if (/[\d\-\+\(\)]+/g.test(input.value)) {
+          input.classList.remove('false')
+          input.classList.add('success')
+        } else {
+          input.classList.add('false')
+          input.classList.remove('success')
+        }
+      }
+
+      if (input === input.closest('[name="user_message"]')) {
+        if (/[а-яА-Я\.\,\!\?\$\:\-\d\s]/g.test(input.value)) {
+          input.classList.remove('false')
+          input.classList.add('success')
+        } else {
+          input.classList.add('false')
+          input.classList.remove('success')
+        }
+      }
+    })
 
     list.forEach(input => {
       if (!input.classList.contains('success')) {
