@@ -11,7 +11,7 @@ const modal = () => {
 
   const challenge = () => {
     animate({
-      duration: 1000,
+      duration: 400,
       timing(timeFraction) {
         return timeFraction;
       },

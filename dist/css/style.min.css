@@ -777,6 +777,10 @@ footer .web {
   background-color: rgba(0, 0, 0, .5)
 }
 
+input.false {
+  box-shadow: 1px 1px 1px red, 1px 1px 5px red;
+}
+
 .popup .main-form input {
   display: block;
   left: 0;
